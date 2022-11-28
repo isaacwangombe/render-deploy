@@ -11,6 +11,7 @@ django = "^3.2.16"
 dj-database-url = "^1.0.0"
 psycopg2-binary = "^2.9.5"
 gunicorn = "^20.1.0"
+whitenoise = {extras = ["brotli"], version = "^6.2.0"}
 
 
 [build-system]
