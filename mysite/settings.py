@@ -142,5 +142,5 @@ import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:postgres@localhost:5432/mysite',        
+        default='postgres://portfolio_l7ee_user:HHZdiPywbbdjzIHmoxuw79Tx3W4lRjlV@dpg-cdq8kcirrk09t4aod0p0-a/portfolio_l7ee',        
         conn_max_age=600    )}
