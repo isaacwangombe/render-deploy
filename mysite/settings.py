@@ -12,7 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,12 +41,18 @@ if RENDER_EXTERNAL_HOSTNAME: ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 INSTALLED_APPS = [
      'render.apps.RenderConfig', 
+     'portfolio.apps.PortfolioConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+    'cloudinary',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +64,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -138,9 +149,18 @@ if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import dj_database_url
+cloudinary.config( 
+  cloud_name = "dtj7bnapz", 
+  api_key = "955543347862628", 
+  api_secret = "fDcoDRd_45Ta9KTrg-KBQsqU9uM" 
+)
+
+
 
 DATABASES = {
     'default': dj_database_url.config(
         default='postgres://portfolio_l7ee_user:HHZdiPywbbdjzIHmoxuw79Tx3W4lRjlV@dpg-cdq8kcirrk09t4aod0p0-a/portfolio_l7ee',        
         conn_max_age=600    )}
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True 
