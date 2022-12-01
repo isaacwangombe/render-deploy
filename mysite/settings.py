@@ -40,8 +40,9 @@ if RENDER_EXTERNAL_HOSTNAME: ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 # Application definition
 
 INSTALLED_APPS = [
-     'render.apps.RenderConfig', 
-     'portfolio.apps.PortfolioConfig',
+    'portfolio.apps.PortfolioConfig',
+
+    # 'render.apps.RenderConfig', 
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -57,7 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
