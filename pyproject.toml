@@ -19,6 +19,5 @@ cloudinary = "^1.30.0"
 
 [build-system]
 requires = ["poetry-core",
- "setuptools>=30.3.0,<50", 
- "setuptools_scm>=3.3.1"]
+"setuptools!=50.0"]
 build-backend = "poetry.core.masonry.api"
