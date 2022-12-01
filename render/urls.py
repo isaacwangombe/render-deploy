@@ -4,6 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('portfolio/', include('portfolio.urls')),
+    path('port/', views.index, name='port'),
 
 ]
