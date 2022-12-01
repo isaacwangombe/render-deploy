@@ -1,9 +1,9 @@
-# from django.urls import path, include
+from django.urls import path, include
 
-# from . import views
+from . import views
 
-# urlpatterns = [
-#     path('', views.index, name='port'),
-#     path('port/', views.index, name='port'),
+urlpatterns = [
+    # path('', views.index, name='port'),
+    # path('port/', views.index, name='port'),
 
-# ]
+]
