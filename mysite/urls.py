@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
         path('', include('render.urls')),
         path('portfolio/', include('portfolio.urls')),
+        path('gallery/', include('gallery.urls')),
         ]
 
 
