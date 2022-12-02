@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Databases, Frameworks, Languages, Projects, Comments, Tools 
+from .models import PortfolioDatabases, PortfolioFrameworks, PortfolioLanguages, PortfolioProjects, PortfolioComments, PortfolioTools 
 
 
 
@@ -7,26 +7,26 @@ from .models import Databases, Frameworks, Languages, Projects, Comments, Tools
 class LanguagesSerializer(serializers.ModelSerializer):
   
   class Meta:
-    model = Languages
+    model = PortfolioLanguages
     fields = ('id','language')
 
 
 class FrameworksSerializer(serializers.ModelSerializer):
   
   class Meta:
-    model = Frameworks
+    model = PortfolioFrameworks
     fields = ('id','framework')
 
 class ToolsSerializer(serializers.ModelSerializer):
   
   class Meta:
-    model = Tools
+    model = PortfolioTools
     fields = ('id','tool')
 
 class DatabasesSerializer(serializers.ModelSerializer):
   
   class Meta:
-    model = Databases
+    model = PortfolioDatabases
     fields = ('id','database')
 
 
@@ -38,11 +38,11 @@ class ProjectSerializer(serializers.ModelSerializer):
   tools = ToolsSerializer(many=True)
   database = DatabasesSerializer(many=True)
   class Meta:
-    model = Projects
+    model = PortfolioProjects
     fields = ('id','name', 'details', 'date', 'languages', 'frameworks', 'tools', 'database', 'image','link','github')
 
 class CommentsSerializer(serializers.ModelSerializer):
   class Meta:
-    model = Comments
+    model = PortfolioComments
     fields = ('name', 'email',  'comment', 'design_rating', 'content_rating', 'user_rating', 'date', 'project')
 

@@ -3,13 +3,13 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
-class Languages(models.Model):
+class PortfolioLanguages(models.Model):
 	language = models.CharField(max_length =30)
 	def __str__(self):
 		return self.language
 
 	class Meta:
-			verbose_name_plural  =  "Languages"  
+			verbose_name_plural  =  "PortfolioLanguages"  
 
 
 	@classmethod
@@ -18,13 +18,13 @@ class Languages(models.Model):
 		return items
 
 
-class Frameworks(models.Model):
+class PortfolioFrameworks(models.Model):
 	framework = models.CharField(max_length =30, blank=True, null=True)
 	def __str__(self):
 		return self.framework
 
 	class Meta:
-			verbose_name_plural  =  "Frameworks"  
+			verbose_name_plural  =  "PortfolioFrameworks"  
 
 
 
@@ -33,13 +33,13 @@ class Frameworks(models.Model):
 		items = cls.objects.all()
 		return items
 
-class Tools(models.Model):
+class PortfolioTools(models.Model):
 	tool = models.CharField(max_length =30, blank=True, null=True)
 	def __str__(self):
 		return self.tool
 
 	class Meta:
-			verbose_name_plural  =  "Tools"  
+			verbose_name_plural  =  "PortfolioTools"  
 
 
 	@classmethod
@@ -47,36 +47,36 @@ class Tools(models.Model):
 		items = cls.objects.all()
 		return items
 
-class Databases(models.Model):
+class PortfolioDatabases(models.Model):
 	database = models.CharField(max_length =30, blank=True, null=True)
 	def __str__(self):
 		return self.database
 
 	class Meta:
-			verbose_name_plural  =  "Databases"  
+			verbose_name_plural  =  "PortfolioDatabases"  
 
 
 	@classmethod
 	def get_all(cls):
 		items = cls.objects.all()
 		return items
-class Projects(models.Model):
+class PortfolioProjects(models.Model):
 	name = models.CharField(max_length =30)
 	details = models.TextField(max_length =1000)
 	link = models.CharField(max_length =150, blank=True, null=True)
 	github = models.CharField(max_length =150, blank=True, null=True)
 	date = models.DateField(auto_now_add=False) 
-	languages = models.ManyToManyField(Languages , db_column='languages_language')
-	frameworks = models.ManyToManyField(Frameworks, blank=True)
-	tools = models.ManyToManyField(Tools, blank=True)
-	database = models.ManyToManyField(Databases, blank=True)
+	languages = models.ManyToManyField(PortfolioLanguages , db_column='languages_language')
+	frameworks = models.ManyToManyField(PortfolioFrameworks, blank=True)
+	tools = models.ManyToManyField(PortfolioTools, blank=True)
+	database = models.ManyToManyField(PortfolioDatabases, blank=True)
 	image = CloudinaryField('image')
 
 	def __str__(self):
 		return self.name
 
 	class Meta:
-			verbose_name_plural  =  "Projects"  
+			verbose_name_plural  =  "PortfolioProjects"  
 
 	@classmethod
 	def get_all(cls):
@@ -120,7 +120,7 @@ RATING = (
 
 )
 
-class Comments(models.Model):
+class PortfolioComments(models.Model):
 	name = models.CharField(max_length =30)
 	email = models.EmailField(max_length =30, blank=True,null=True)
 	comment = models.TextField(max_length =1000, default = "Great Project")
@@ -128,13 +128,13 @@ class Comments(models.Model):
 	user_rating = models.IntegerField(choices=RATING, default=1)
 	content_rating = models.IntegerField(choices=RATING, default=1)
 	date = models.DateField(auto_now_add=True) 
-	project = models.ForeignKey(Projects, on_delete=models.CASCADE)
+	project = models.ForeignKey(PortfolioProjects, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return str(f"name-{self.name}, date- {self.date}")
 
 	class Meta:
-			verbose_name_plural  =  "Comments"  
+			verbose_name_plural  =  "PortfolioComments"  
 
 
 	@classmethod

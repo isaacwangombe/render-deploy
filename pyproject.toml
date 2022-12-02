@@ -15,6 +15,7 @@ whitenoise = {extras = ["brotli"], version = "^6.2.0"}
 djangorestframework = "^3.14.0"
 django-cors-headers = "^3.13.0"
 cloudinary = "^1.30.0"
+django-bootstrap5 = "^22.2"
 
 
 [build-system]
